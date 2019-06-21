@@ -13,5 +13,12 @@
   <ItemGroup>
     <Folder Include="Domain\" />
     <Folder Include="Domain\Models\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Domain\Services\" />
+    <Folder Include="Services\" />
+    <Folder Include="Domain\Repositories\" />
+    <Folder Include="Persistence\" />
+    <Folder Include="Persistence\Contexts\" />
+    <Folder Include="Persistence\Repositories\" />
   </ItemGroup>
 </Project>
