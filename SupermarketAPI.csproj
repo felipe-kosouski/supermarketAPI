@@ -24,5 +24,7 @@
     <Folder Include="Persistence\Repositories\" />
     <Folder Include="Resources\" />
     <Folder Include="Mapping\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Domain\Communication\" />
   </ItemGroup>
 </Project>
