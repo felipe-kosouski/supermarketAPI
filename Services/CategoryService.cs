@@ -18,6 +18,7 @@ namespace SupermarketAPI.Services
             this.categoryRepository = categoryRepository;
             this.unitOfWork = unitOfWork;
         }
+
         public async Task<IEnumerable<Category>> ListAsync()
         {
             return await categoryRepository.ListAsync();
@@ -59,8 +60,30 @@ namespace SupermarketAPI.Services
             }
             catch (Exception ex)
             {
-                return new SaveCategoryResponse($"An error occurred when saving the category: {ex.Message}");
+                return new SaveCategoryResponse($"An error occurred when updating the category: {ex.Message}");
 
+            }
+        }
+
+        public async Task<SaveCategoryResponse> DeleteAsync(int id)
+        {
+            var existingCategory = await categoryRepository.FindByIdAsync(id);
+
+            if (existingCategory == null)
+            {
+                return new SaveCategoryResponse("Category not found!");
+            }
+
+            try
+            {
+                categoryRepository.Remove(existingCategory);
+                await unitOfWork.CompleteAsync();
+
+                return new SaveCategoryResponse(existingCategory);
+            }
+            catch (Exception ex)
+            {
+                return new SaveCategoryResponse($"An error occurred when deleting the category: {ex.Message}");
             }
         }
     }
