@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SupermarketAPI.Domain.Repositories;
+using SupermarketAPI.Domain.Services;
 using SupermarketAPI.Domain.Services.Services;
 using SupermarketAPI.Persistence.Contexts;
 using SupermarketAPI.Persistence.Repositories;
@@ -32,9 +33,14 @@ namespace SupermarketAPI
             });
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddScoped<ICategoryService, CategoryService>();
-			services.AddScoped<IUnitOfWork, UnitOfWork>();
-			services.AddAutoMapper();
+            services.AddScoped<IProductService, ProductService>();
+
+
+            services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
